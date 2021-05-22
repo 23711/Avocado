@@ -3,6 +3,13 @@
 const baseUrl = "http://platzi-avo.vercel.app"
 const appNode = document.querySelector("div#container")
 
+appNode.addEventListener("click" , (e)=> {
+    console.log(e)
+    if(e.target.nodeName === "H2"){
+        alert("hola")
+    }
+})
+
 const formatPrice = (price) => {
     //https://developer.mozilla.org/en-US/docs/web/Javascript/Reference/Global_Objects/Intl
     const newPrice = new window.Intl.NumberFormat("en-EN", {
@@ -32,11 +39,13 @@ window.fetch(`${baseUrl}/api/avo`)
             //creat title
             const title = document.createElement("h2");
             title.textContent = item.name;
+            title.className = "text"
             // title.style.fontSize = "3rem"
             title.className = "so-big"
             //creat price 
-            const price = document.createElement("p");
+            const price = document.createElement("span");
             price.textContent = formatPrice(item.price);
+
 
             //creat container
             const container = document.createElement("div");
